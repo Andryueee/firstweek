@@ -1,26 +1,10 @@
 let app = new Vue({
     el: '#app',
-    methods: {
-        updateProduct(variantImage) {
-            this.image = variantImage
-        },
-
-        addToCart() {
-            this.cart += 1
-        },
-        deleteFromCart() {
-            if (this.cart > 0) {
-                this.cart -= 1;
-            }
-        }
-    },
-
     data: {
         product: "Socks",
         image: "./assets/vmSocks-green-onWhite.jpg",
         altText: "A pair of socks",
-        cart: 0,
-        inStock: true,
+        inStock: false,
         details: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
             {
@@ -34,8 +18,14 @@ let app = new Vue({
                 variantImage: "./assets/vmSocks-blue-onWhite.jpg",
             }
         ],
-
+        cart: 0
+    },
+    methods: {
+        addToCart() {
+            this.cart += 1
+        },
+        updateProduct(variantImage) {
+            this.image = variantImage
+        }
     }
 })
-
- 
