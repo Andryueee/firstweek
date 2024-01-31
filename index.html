@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    
+
    <meta charset="UTF-8">
    <meta name="viewport"
          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -10,7 +10,7 @@
     <script defer src="js/main.js"></script>
    <link rel="stylesheet" href="css/main.css">
    <title>Product App</title>
-   
+
 </head>
 <div id="app">
    <div class="product">
@@ -22,15 +22,24 @@
            <p v-if="inStock">In stock</p>
            <p v-else>Out of Stock</p>
            <ul>
-            <li v-for="detail in details">{{ detail }}</li>  <!-- Вывод массива из JS -->
-            <li v-for="size in sizes">{{ size }}</li>
-            </ul>
-            <div v-for="variant in variants" :key="variant.variantId">
-               <p>{{ variant.variantColor }}</p>
-            </div>
-            
+               <li v-for="detail in details">{{ detail }}</li>
+           </ul>
+           <div v-for="variant in variants" :key="variant.variantId">
+               <p @mouseover="updateProduct(variant.variantImage)">
+                   {{ variant.variantColor }}
+               </p>
+           </div>
+
+           <button v-on:click="addToCart">Add to cart</button>
+           <button v-on:click="deleteFromCart">Undo cart</button>
+           <div class="cart">
+               <p>Cart({{ cart }})</p>
+           </div>
+
        </div>
-       
+
+       </div>
+
    </div>
 </div>
 
